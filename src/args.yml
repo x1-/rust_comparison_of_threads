@@ -1,0 +1,28 @@
+name: comparison_of_threads
+version: "0.1.0"
+author: x1- <viva008@gmail.com>
+about: The arguments of comparison_of_threads.
+args:
+    - type:
+        short: t
+        long: type
+        help: Sets selecting from [cpupool|futures|rayon|tokio]
+        value_name: TYPE
+        required: false
+        takes_value: true
+    - num_threads:
+        short: n
+        long: num_threads
+        help: Sets the number of threads
+        value_name: NUM_THREADS
+        required: false
+        takes_value: true
+    - sleep_sec:
+        short: s
+        long: sleep_sec
+        help: Sets the seconds of sleep
+        value_name: SLEEP_SEC
+        required: false
+        takes_value: true
+
+
