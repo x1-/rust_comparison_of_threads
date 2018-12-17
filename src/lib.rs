@@ -6,6 +6,7 @@ extern crate rayon;
 extern crate tokio_threadpool;
 
 pub mod args;
+pub mod channel_demo;
 pub mod cpupool_demo;
 pub mod futures_demo;
 pub mod rayon_demo;

@@ -1,7 +1,7 @@
 extern crate rust_comparison_of_threads;
 
 use std::time::{Duration, Instant};
-use rust_comparison_of_threads::{cpupool_demo, futures_demo, rayon_demo, tokio_demo, Args};
+use rust_comparison_of_threads::{channel_demo, cpupool_demo, futures_demo, rayon_demo, tokio_demo, Args};
 
 fn main() {
 
@@ -21,6 +21,9 @@ fn main() {
     } else if args.tpe() == "rayon" {
         println!("rayon");
         rayon_demo::n_tasks(args.num_threads(), args.sleep_sec());
+    } else if args.tpe() == "channel" {
+        println!("channel");
+        channel_demo::n_tasks(args.num_threads(), args.sleep_sec());
     } else {
         println!("Not implemented.");
     }
