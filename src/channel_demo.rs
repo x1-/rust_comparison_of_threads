@@ -181,3 +181,20 @@ pub fn n_tasks(n: usize, sleep_sec: u64) {
 
     println!("end: {:?}", f);
 }
+
+pub fn channel_recv(n: usize, sleep_sec: u64) {
+    let mut txes = Vec::<(Sender<usize>, usize)>::new();
+    let mut rxes = Vec::<Receiver<usize>>::new();
+
+    (0..n).for_each(|i| {
+        println!("tasks: {}", i);
+        let (tx, rx) = mpsc::channel();
+        txes.push((tx, i));
+        rxes.push(rx);
+    });
+
+    for rx in rxes {
+        rx.recv().unwrap();
+    };
+    println!("end!");
+}

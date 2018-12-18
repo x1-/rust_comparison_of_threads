@@ -1,7 +1,7 @@
 extern crate rust_comparison_of_threads;
 
 use std::time::{Duration, Instant};
-use rust_comparison_of_threads::{channel_demo, cpupool_demo, futures_demo, rayon_demo, tokio_demo, Args};
+use rust_comparison_of_threads::{channel_demo, cpupool_demo, futures_demo, rayon_demo, spawn_demo, tokio_demo, Args};
 
 fn main() {
 
@@ -12,18 +12,35 @@ fn main() {
     if args.tpe() == "cpupool" {
         println!("cpupool");
         cpupool_demo::n_tasks(args.num_threads(), args.sleep_sec());
+
     } else if args.tpe() == "futures" {
         println!("futures");
         futures_demo::n_tasks(args.num_threads(), args.sleep_sec());
+
     } else if args.tpe() == "tokio" {
         println!("tokio");
         tokio_demo::n_tasks(args.num_threads(), args.sleep_sec());
+
     } else if args.tpe() == "rayon" {
         println!("rayon");
         rayon_demo::n_tasks(args.num_threads(), args.sleep_sec());
+
     } else if args.tpe() == "channel" {
         println!("channel");
         channel_demo::n_tasks(args.num_threads(), args.sleep_sec());
+
+    } else if args.tpe() == "channel_only" {
+        println!("channel_only");
+        channel_demo::channel_recv(args.num_threads(), args.sleep_sec());
+
+    } else if args.tpe() == "spawn" {
+        println!("spawn");
+        spawn_demo::n_tasks(args.num_threads(), args.sleep_sec());
+
+    } else if args.tpe() == "tokio_spawn" {
+        println!("tokio_spawn");
+        spawn_demo::tokio_spawn(args.num_threads(), args.sleep_sec());
+
     } else {
         println!("Not implemented.");
     }
