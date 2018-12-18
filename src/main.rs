@@ -1,7 +1,7 @@
 extern crate rust_comparison_of_threads;
 
 use std::time::{Duration, Instant};
-use rust_comparison_of_threads::{channel_demo, cpupool_demo, futures_demo, rayon_demo, spawn_demo, tokio_demo, Args};
+use rust_comparison_of_threads::*;
 
 fn main() {
 
@@ -19,7 +19,7 @@ fn main() {
 
     } else if args.tpe() == "tokio" {
         println!("tokio");
-        tokio_demo::n_tasks(args.num_threads(), args.sleep_sec());
+        tokio_threadpool_demo::n_tasks(args.num_threads(), args.sleep_sec());
 
     } else if args.tpe() == "rayon" {
         println!("rayon");
@@ -39,7 +39,15 @@ fn main() {
 
     } else if args.tpe() == "tokio_spawn" {
         println!("tokio_spawn");
-        spawn_demo::tokio_spawn(args.num_threads(), args.sleep_sec());
+        tokio_spawn_demo::n_tasks(args.num_threads(), args.sleep_sec());
+
+    } else if args.tpe() == "tokio_oneshot" {
+        println!("tokio_oneshot");
+        tokio_spawn_demo::tokio_oneshot(args.num_threads(), args.sleep_sec());
+
+    } else if args.tpe() == "tokio_mpsc" {
+        println!("tokio_mpsc");
+        tokio_spawn_demo::tokio_mpsc(args.num_threads(), args.sleep_sec());
 
     } else {
         println!("Not implemented.");
