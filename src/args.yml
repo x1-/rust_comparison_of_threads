@@ -6,7 +6,7 @@ args:
     - type:
         short: t
         long: type
-        help: Sets selecting from [cpupool|futures|rayon|tokio]
+        help: Sets selecting from [cpupool|futures|rayon|tokio|channel|channel_only|spawn|tokio_spawn|tokio_oneshot|tokio_mpsc]
         value_name: TYPE
         required: false
         takes_value: true
