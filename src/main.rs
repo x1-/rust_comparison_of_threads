@@ -17,6 +17,14 @@ fn main() {
         println!("futures");
         futures_demo::n_tasks(args.num_threads(), args.sleep_sec());
 
+    } else if args.tpe() == "futures_local" {
+        println!("futures_local");
+        futures_local_demo::n_tasks(args.num_threads(), args.sleep_sec());
+
+    } else if args.tpe() == "futures_thread" {
+        println!("futures_thread");
+        futures_thread_demo::n_tasks(args.num_threads(), args.sleep_sec());
+
     } else if args.tpe() == "tokio" {
         println!("tokio");
         tokio_threadpool_demo::n_tasks(args.num_threads(), args.sleep_sec());
